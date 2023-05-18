@@ -4,6 +4,8 @@ const express = require('express');
 const cors = require('cors');
 const iceCreamRouter = require('./routes/ice-cream');
 const toppingRouter = require('./routes/toppings');
+const notFound = require('./error-handlers/404');
+const errorhandler = require('./error-handlers/500');
 
 const app = express();
 
@@ -19,6 +21,9 @@ app.get('/', (req, res, next) => {
 const start = (port) => {
   app.listen(port, () => console.log('server running on', port));
 };
+
+app.use('*', notFound);
+app.use(errorhandler);
 
 module.exports = {
   app,

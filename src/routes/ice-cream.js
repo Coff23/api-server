@@ -6,9 +6,9 @@ const { iceCreamModel } = require('../models/index');
 
 router.get('/ice-cream', async (req, res, next) => {
   try {
-    let iceCream = await iceCreamModel.findAll();
+    let allIceCream = await iceCreamModel.findAll();
     
-    res.status(200).send(iceCream);
+    res.status(200).send(allIceCream);
   } catch (error) {
     next(error);
   }
@@ -21,7 +21,7 @@ router.get('/ice-cream/:id', async (req, res, next) => {
   res.status(200).send(singleIceCream);
 });
 
-router.post('/ice-cream', async (req, res, next) => {
+router.post('/ice-cream', async (req, res) => {
   let newIceCream = await iceCreamModel.create(req.body);
 
   res.status(200).send(newIceCream);
