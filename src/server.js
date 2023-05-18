@@ -18,12 +18,12 @@ app.get('/', (req, res, next) => {
   res.status(200).send('Hello World');
 });
 
+app.use('*', notFound);
+app.use(errorhandler);
+
 const start = (port) => {
   app.listen(port, () => console.log('server running on', port));
 };
-
-app.use('*', notFound);
-app.use(errorhandler);
 
 module.exports = {
   app,

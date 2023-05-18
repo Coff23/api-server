@@ -4,13 +4,13 @@ const express = require('express');
 const router = express.Router();
 const { toppingModel } = require('../models/index');
 
-router.get('/topping', async (req, res, next) => {
+router.get('/topping', async (req, res) => {
   let topping = await toppingModel.findAll();
 
   res.status(200).send(topping);
 });
 
-router.get('/topping/:id', async (req, res, next) => {
+router.get('/topping/:id', async (req, res) => {
   let singleTopping = await toppingModel.findAll({where: {id: req.params.id}});
 
   res.status(200).send(singleTopping);
