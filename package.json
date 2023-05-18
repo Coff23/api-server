@@ -1,4 +1,18 @@
 {
+  "name": "api-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest --verbose --coverage",
+    "test-watch": "jest --watchAll --verbose --coverage",
+    "init:config": "sequelize init:config",
+    "db:create": "sequelize db:create"
+  },
+  "keywords": [],
+  "author": "Joshua Coffey",
+  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -11,22 +25,5 @@
     "sqlite3": "^5.1.6",
     "supertest": "^6.3.3"
   },
-  "name": "api-server",
-  "description": "",
-  "version": "1.0.0",
-  "main": "index.js",
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Coff23/api-server.git"
-  },
-  "author": "Joshua Coffey",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Coff23/api-server/issues"
-  },
-  "homepage": "https://github.com/Coff23/api-server#readme"
+  "devDependencies": {}
 }
