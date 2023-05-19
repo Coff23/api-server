@@ -10,12 +10,17 @@ const errorhandler = require('./error-handlers/500');
 const app = express();
 
 app.use(cors());
-app.use(express());
+app.use(express.json());
 app.use(iceCreamRouter);
 app.use(toppingRouter);
 
 app.get('/', (req, res, next) => {
-  res.status(200).send('Hello World');
+  try {
+    res.status(200).send('Hello World');
+    
+  } catch (error) {
+    next(error);
+  }
 });
 
 app.use('*', notFound);
