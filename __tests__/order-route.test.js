@@ -25,7 +25,7 @@ describe('ice cream router', () => {
   });
 
   test('ice cream get route', async () => {
-    let response = await request.get('/ice-cream');
+    let response = await request.get('/ice-cream').send({flavor: 'chocolate'});
 
     expect(response.status).toEqual(200);
     expect(response.body[0].flavor).toEqual('chocolate');

@@ -15,12 +15,7 @@ app.use(iceCreamRouter);
 app.use(toppingRouter);
 
 app.get('/', (req, res, next) => {
-  try {
-    res.status(200).send('Hello World');
-    
-  } catch (error) {
-    next(error);
-  }
+  res.status(200).send('Hello World');
 });
 
 app.use('*', notFound);
