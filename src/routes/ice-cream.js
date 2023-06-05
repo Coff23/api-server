@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { toppingModel, iceCreamModel } = require('../models');
+const { iceCreamModel, toppingModel } = require('../models');
 
 router.get('/ice-cream', async (req, res) => {
   let allIceCream = await iceCreamModel.findAll();
@@ -25,10 +25,8 @@ router.get('/ice-creamWithTopping', async (req, res, next) => {
 
 router.get('/ice-cream/:id', async (req, res, next) => {
   try {
-
-    let singleIceCream = await iceCreamModel.findAll({
-      include: { model: toppingModel },
-      where: { id: req.params.id },
+    let singleIceCream = await iceCreamModel.findByPk(req.params.id, {
+      include: toppingModel, // Include the toppingModel in the query
     });
     
     res.status(200).send(singleIceCream);
@@ -53,7 +51,6 @@ router.post('/ice-cream', async (req, res, next) => {
 
 router.put('/ice-cream/:id', async (req, res, next) => {
   try {
-
     await iceCreamModel.update(req.body, { where: { id: req.params.id } });
     const updateIceCream = await iceCreamModel.findByPk(req.params.id);
     res.status(200).send(updateIceCream);

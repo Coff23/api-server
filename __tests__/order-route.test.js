@@ -35,6 +35,6 @@ describe('ice cream router', () => {
     let response = await request.get('/ice-cream/1');
 
     expect(response.status).toEqual(200);
-    expect(response.body[0].flavor).toEqual('chocolate');
+    expect(response.body.flavor).toEqual('chocolate');
   });
 });
