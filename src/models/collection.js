@@ -31,6 +31,36 @@ class Collection {
       return error;
     }
   }
+
+  async update(id, data) {
+    try {
+      const record = await this.model.findByPk(id);
+      if (record) {
+        await record.update(data);
+        return record;
+      } else {
+        throw new Error('Record not found');
+      }
+    } catch (error) {
+      console.error('We have an error in Collection', error);
+      return error;
+    }
+  }
+
+  async delete(id) {
+    try {
+      const record = await this.model.findByPk(id);
+      if (record) {
+        await record.destroy();
+        return true;
+      } else {
+        throw new Error('Record not found');
+      }
+    } catch (error) {
+      console.error('We have an error in Collection', error);
+      return error;
+    }
+  }
 }
 
 module.exports = Collection;

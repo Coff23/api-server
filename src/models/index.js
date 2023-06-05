@@ -4,7 +4,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 require('dotenv').config();
 const iceCream = require('./ice-cream');
 const topping = require('./toppings');
-const Collection = require('./collection');
+// const Collection = require('./collection');
 
 const DATABASE_URL = process.env.DATABASE_URL === 'test' ? 'sqlite::memory' : process.env.DATABASE_URL;
 
@@ -19,5 +19,6 @@ toppingModel.belongsTo(iceCreamModel);
 module.exports = {
   sequelizeDatabase,
   iceCreamModel,
-  topping: new Collection(toppingModel),
+  // topping: new Collection(toppingModel),
+  toppingModel,
 };
